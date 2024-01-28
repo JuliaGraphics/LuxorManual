@@ -6,7 +6,7 @@
 
 ## Luxor Manual
 
-This repo contains the documentation for [Luxor](https://juliagraphics.github.io/Luxor.jl).
+This repo contains the documentation for [Luxor](https://github.com/JuliaGraphics/Luxor.jl).
 
 Luxor is a Julia package for drawing simple static 2D vector graphics. 
 It provides basic drawing functions and utilities for working with shapes, polygons, clipping masks, 
