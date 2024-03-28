@@ -31,7 +31,7 @@ preview()</code></pre><p>The <code>@drawsvg</code> macro returns SVG code of the
     sethue(&quot;white&quot;)
     foreach(f -&gt; arrow(f, between(f, randpoint, .1), arrowheadlength=6),
         first.(collect(Table(fill(30, 20), fill(30, 20)))))
-end</code></pre><img src="3bb351a7.svg" alt="Example block output"/><p>The <code>@draw</code> and <code>drawsvg</code> macros create a PNG or SVG format drawing in memory, rather than saved in a file, and the result of executing the code is returned and, in many editing environments, included and displayed as a graphic. For VS Code, the graphic is usually displayed in the plot pane. In Pluto, it appears above the cell.</p><pre><code class="language-julia hljs">using Luxor
+end</code></pre><img src="1dd493c5.svg" alt="Example block output"/><p>The <code>@draw</code> and <code>drawsvg</code> macros create a PNG or SVG format drawing in memory, rather than saved in a file, and the result of executing the code is returned and, in many editing environments, included and displayed as a graphic. For VS Code, the graphic is usually displayed in the plot pane. In Pluto, it appears above the cell.</p><pre><code class="language-julia hljs">using Luxor
 
 @draw begin
     setopacity(0.85)
@@ -175,7 +175,7 @@ textformat(
     position=boxtopleft() * 0.75,
     width=650,
     leading=200)
-end 800 400</code></pre><img src="a053b110.svg" alt="Example block output"/><p>(but hopefully not quite as garish as this.)</p><h2 id="Simple-numberlines"><a class="docs-heading-anchor" href="#Simple-numberlines">Simple numberlines</a><a id="Simple-numberlines-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-numberlines" title="Permalink"></a></h2><p><a href="../../reference/api/#Luxor.tickline-Tuple{Any, Any}"><code>tickline()</code></a> is useful for generating spaced points along a line:</p><pre><code class="language-julia hljs">using Luxor
+end 800 400</code></pre><img src="e0a6d32d.svg" alt="Example block output"/><p>(but hopefully not quite as garish as this.)</p><h2 id="Simple-numberlines"><a class="docs-heading-anchor" href="#Simple-numberlines">Simple numberlines</a><a id="Simple-numberlines-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-numberlines" title="Permalink"></a></h2><p><a href="../../reference/api/#Luxor.tickline-Tuple{Any, Any}"><code>tickline()</code></a> is useful for generating spaced points along a line:</p><pre><code class="language-julia hljs">using Luxor
 @drawsvg begin
 background(&quot;black&quot;)
 fontsize(12)
@@ -184,7 +184,7 @@ tickline(Point(-350, 0), Point(350, 0),
     finishnumber=100,
     log=true,
     major=7)
-end 800 150</code></pre><img src="281c65d7.svg" alt="Example block output"/><p>The <a href="../../reference/api/#Luxor.arrow"><code>arrow</code></a> functions let you add decoration to the arrow shafts, so it&#39;s possible to use this function to create more complicated spacings. Here&#39;s how a curved number line could be made:</p><pre><code class="language-julia hljs">using Luxor
+end 800 150</code></pre><img src="f589efac.svg" alt="Example block output"/><p>The <a href="../../reference/api/#Luxor.arrow"><code>arrow</code></a> functions let you add decoration to the arrow shafts, so it&#39;s possible to use this function to create more complicated spacings. Here&#39;s how a curved number line could be made:</p><pre><code class="language-julia hljs">using Luxor
 @drawsvg begin
     background(&quot;antiquewhite&quot;)
     _counter() = (a = -1; () -&gt; a += 1)
@@ -202,7 +202,7 @@ end 800 150</code></pre><img src="281c65d7.svg" alt="Example block output"/><p>T
                 line(O - (0, 5), O + (0, 5), action = :stroke)
             end
         )
-end 800 300</code></pre><img src="e5fae504.svg" alt="Example block output"/><p>The <code>decorate</code> function here adds graphics and text at the origin, which is located at each point along the shaft.</p><h2 id="Draw-a-matrix"><a class="docs-heading-anchor" href="#Draw-a-matrix">Draw a matrix</a><a id="Draw-a-matrix-1"></a><a class="docs-heading-anchor-permalink" href="#Draw-a-matrix" title="Permalink"></a></h2><p>To draw the contents of a matrix, you can use a Table to generate the positions for the numbers.</p><p>It&#39;s sometimes useful to be able to highlight particular cells. Here, numbers that have already been used once are drawn in orange.</p><pre><code class="language-julia hljs">using Luxor
+end 800 300</code></pre><img src="7d9d287a.svg" alt="Example block output"/><p>The <code>decorate</code> function here adds graphics and text at the origin, which is located at each point along the shaft.</p><h2 id="Draw-a-matrix"><a class="docs-heading-anchor" href="#Draw-a-matrix">Draw a matrix</a><a id="Draw-a-matrix-1"></a><a class="docs-heading-anchor-permalink" href="#Draw-a-matrix" title="Permalink"></a></h2><p>To draw the contents of a matrix, you can use a Table to generate the positions for the numbers.</p><p>It&#39;s sometimes useful to be able to highlight particular cells. Here, numbers that have already been used once are drawn in orange.</p><pre><code class="language-julia hljs">using Luxor
 
 function drawmatrix(A::Matrix;
         cellsize = (10, 10))
@@ -232,7 +232,7 @@ A = rand(1:99, 5, 8)
     setline(0.5)
     sethue(&quot;white&quot;)
     drawmatrix(A, cellsize = 10 .* size(A))
-end</code></pre><img src="bd8106af.svg" alt="Example block output"/><h2 id="Simple-\\LaTeX-equations"><a class="docs-heading-anchor" href="#Simple-\\LaTeX-equations">Simple <span>$\LaTeX$</span> equations</a><a id="Simple-\\LaTeX-equations-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-\\LaTeX-equations" title="Permalink"></a></h2><p>You can draw simple <span>$\LaTeX$</span> equations by passing a string to <code>text()</code>, using the formats provided by the LaTeXStrings.jl package.</p><pre><code class="language-julia hljs"># drawing with 800×300 canvas
+end</code></pre><img src="26f1b328.svg" alt="Example block output"/><h2 id="Simple-\\LaTeX-equations"><a class="docs-heading-anchor" href="#Simple-\\LaTeX-equations">Simple <span>$\LaTeX$</span> equations</a><a id="Simple-\\LaTeX-equations-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-\\LaTeX-equations" title="Permalink"></a></h2><p>You can draw simple <span>$\LaTeX$</span> equations by passing a string to <code>text()</code>, using the formats provided by the LaTeXStrings.jl package.</p><pre><code class="language-julia hljs"># drawing with 800×300 canvas
 using Luxor
 using MathTeXEngine
 d = Drawing(800, 300, :svg)
@@ -249,7 +249,7 @@ end
 sethue(&quot;grey5&quot;)
 text(L&quot;f(t) = [4\cos(t) + 2\cos(5t), 4\sin(t) + 2\sin(5t)]&quot;, O, halign=:center)
 finish()
-d</code></pre><img src="2ce081ab.svg" alt="Example block output"/><p>&lt;!– <img src="../../assets/figures/latexequation.svg" alt="LaTeX text"/> –&gt;</p><p>See the <a href="../../howto/text/#Writing-LaTeX">Writing LaTeX</a> section for more information. You&#39;ll have to install the fonts that MathTeXEngine.jl requires. </p><h2 id="Drawing-pixels"><a class="docs-heading-anchor" href="#Drawing-pixels">Drawing pixels</a><a id="Drawing-pixels-1"></a><a class="docs-heading-anchor-permalink" href="#Drawing-pixels" title="Permalink"></a></h2><p>You can use Luxor to draw into an array of ARGB32 values, which are essentially colored pixels. This example uses Images.jl to display the array.</p><pre><code class="language-julia hljs">using Luxor, Colors, Images
+d</code></pre><img src="3b67416c.svg" alt="Example block output"/><p>&lt;!– <img src="../../assets/figures/latexequation.svg" alt="LaTeX text"/> –&gt;</p><p>See the <a href="../../howto/text/#Writing-LaTeX">Writing LaTeX</a> section for more information. You&#39;ll have to install the fonts that MathTeXEngine.jl requires. </p><h2 id="Drawing-pixels"><a class="docs-heading-anchor" href="#Drawing-pixels">Drawing pixels</a><a id="Drawing-pixels-1"></a><a class="docs-heading-anchor-permalink" href="#Drawing-pixels" title="Permalink"></a></h2><p>You can use Luxor to draw into an array of ARGB32 values, which are essentially colored pixels. This example uses Images.jl to display the array.</p><pre><code class="language-julia hljs">using Luxor, Colors, Images
 
 # a matrix of 150 rows, 600 columns
 buffer = zeros(ARGB32, 150, 600) 
@@ -315,4 +315,4 @@ for v in verts
     end
 end
 end 800 500
-d</code></pre><img src="44c4dbba.svg" alt="Example block output"/></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../tutorial/simple-animation/">« Simple animation</a><a class="docs-footer-nextpage" href="../moreexamples/">More examples »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Saturday 27 January 2024 16:00">Saturday 27 January 2024</span>. Using Julia version 1.10.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+d</code></pre><img src="3162e4ef.svg" alt="Example block output"/></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../tutorial/simple-animation/">« Simple animation</a><a class="docs-footer-nextpage" href="../moreexamples/">More examples »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.3.0 on <span class="colophon-date" title="Thursday 28 March 2024 17:35">Thursday 28 March 2024</span>. Using Julia version 1.10.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

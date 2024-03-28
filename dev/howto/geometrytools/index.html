@@ -48,22 +48,26 @@ arrow(E, F)
 sethue(&quot;orange&quot;)
 arrow(G, H)
 sethue(&quot;purple&quot;)
-circle.([A, B, C, D, E, F, G, H], 4, action = :fill)</code></pre><img src="209e2132.svg" alt="Example block output"/><h2 id="Points-and-arcs"><a class="docs-heading-anchor" href="#Points-and-arcs">Points and arcs</a><a id="Points-and-arcs-1"></a><a class="docs-heading-anchor-permalink" href="#Points-and-arcs" title="Permalink"></a></h2><p>Use <code>isarcclockwise(c, p1, p2)</code> to check whether an arc centered at <code>c</code> running from <code>p1</code> to <code>p2</code> is clockwise.</p><p>The <a href="../../reference/api/#Luxor.pointinverse-Tuple{Point, Any, Any}"><code>pointinverse</code></a> function finds the inverse of a point relative to a reference circle (centerpoint and radius). In the following example, each vertex on the shape inside the circle is linked by an arrow to its inverse outside the circle.</p><pre><code class="language-julia hljs">d = @drawsvg begin
+circle.([A, B, C, D, E, F, G, H], 4, action = :fill)</code></pre><img src="0745bf3d.svg" alt="Example block output"/><h2 id="Points-and-arcs"><a class="docs-heading-anchor" href="#Points-and-arcs">Points and arcs</a><a id="Points-and-arcs-1"></a><a class="docs-heading-anchor-permalink" href="#Points-and-arcs" title="Permalink"></a></h2><p>Use <code>isarcclockwise(c, p1, p2)</code> to check whether an arc centered at <code>c</code> running from <code>p1</code> to <code>p2</code> is clockwise.</p><p>The <a href="../../reference/api/#Luxor.pointinverse-Tuple{Point, Any, Any}"><code>pointinverse</code></a> function finds the inverse of a point relative to a reference circle (centerpoint and radius). In the following example, each vertex on the shape inside the circle is linked by an arrow to its inverse outside the circle.</p><pre><code class="language-julia hljs">d = @drawsvg begin
 radius = 60
 circle(O, radius + 20, action = :stroke)
 
 points = polycross(O, radius, 7, vertices=true)
 poly(points, action = :stroke, close=true)
 
-antipoints = last.(pointinverse.(points, O, radius+20))
+antipoints = last.([pointinverse(pt, O, radius + 20) for pt in points])
 
-for (n, pt) in enumerate(zip(points, antipoints))
+#antipoints = last.(pointinverse.(points, O, radius+20))
+
+for (n, ptpair) in enumerate(zip(points, antipoints))
+    pt1, pt2, = ptpair
     sethue(HSB(length(points) * n, 0.8, 0.8))
-    @. circle(pt, distance(O, pt)/6, action = :fill)
+    circle(pt1, distance(O, pt1)/6, action = :fill)
+    circle(pt2, distance(O, pt2)/6, action = :fill)
     sethue(&quot;black&quot;)
-    arrow(pt...)
+    arrow(pt1, pt2)
 end
-end 800 500</code></pre><img src="298e7cb6.svg" alt="Example block output"/><p>Use <a href="../../reference/api/#Luxor.anglethreepoints-Tuple{Point, Point, Point}"><code>anglethreepoints</code></a> to find the angle formed by two lines connecting three points:</p><pre><code class="language-julia hljs">function showangle(pt1, pt2, pt3)
+end 800 500</code></pre><img src="5edc8c2a.svg" alt="Example block output"/><p>Use <a href="../../reference/api/#Luxor.anglethreepoints-Tuple{Point, Point, Point}"><code>anglethreepoints</code></a> to find the angle formed by two lines connecting three points:</p><pre><code class="language-julia hljs">function showangle(pt1, pt2, pt3)
     θ = anglethreepoints(pt1, pt2, pt3)
     label(string(round(rad2deg(θ), digits=2), &quot;°&quot;), :w, pt2)
     newpath()
@@ -141,7 +145,7 @@ sethue(&quot;black&quot;)
 if nints == 2
     circle(ip1, 8, action = :stroke)
     circle(ip2, 8, action = :stroke)
-end</code></pre><p><img src="../../assets/figures/intersection_line_circle.png" alt="arc"/></p><p><a href="../../reference/api/#Luxor.intersection2circles-NTuple{4, Any}"><code>intersection2circles</code></a> finds the area of the intersection of two circles, and <a href="../../reference/api/#Luxor.intersectioncirclecircle-NTuple{4, Any}"><code>intersectioncirclecircle</code></a> finds the points where they cross.</p><p>This example shows the areas of two circles, and the area of their intersection.</p><pre><code class="language-julia hljs">c1 = (O, 150)
+end</code></pre><p><img src="../../assets/figures/intersection_line_circle.png" alt="arc"/></p><p><a href="../../reference/api/#Luxor.intersection2circles-Tuple{Point, Real, Point, Real}"><code>intersection2circles</code></a> finds the area of the intersection of two circles, and <a href="../../reference/api/#Luxor.intersectioncirclecircle-NTuple{4, Any}"><code>intersectioncirclecircle</code></a> finds the points where they cross.</p><p>This example shows the areas of two circles, and the area of their intersection.</p><pre><code class="language-julia hljs">c1 = (O, 150)
 c2 = (O + (100, 0), 150)
 
 circle(c1... , action = :stroke)
@@ -258,7 +262,7 @@ setblend(b)
 for pt in randompointarray(BoundingBox() * 0.9, 15)
     d = rescale(distance(pt, O), 0, sqrt(800 * 500), 1, 0)
     circle(pt, 1 + 7d, action = :fill)
-end</code></pre><img src="f9e1ea6c.svg" alt="Example block output"/><p>The <code>randompointarray(point1, point2, n)</code> method generates <code>n</code> random points in the area bounded by two points, using Julia&#39;s random number generator.</p><pre><code class="language-julia hljs">pt1 = Point(-300, -150)
+end</code></pre><img src="fb053264.svg" alt="Example block output"/><p>The <code>randompointarray(point1, point2, n)</code> method generates <code>n</code> random points in the area bounded by two points, using Julia&#39;s random number generator.</p><pre><code class="language-julia hljs">pt1 = Point(-300, -150)
 pt2 = Point(300, 150)
 
 sethue(&quot;purple&quot;)
@@ -266,7 +270,7 @@ map(pt -&gt; circle(pt, 6, action = :fill), (pt1, pt2))
 box(pt1, pt2, action = :stroke)
 
 sethue(&quot;blue&quot;)
-map(pt -&gt; circle(pt, 4, action = :fill), randompointarray(pt1, pt2, 200))</code></pre><img src="48b6e5fd.svg" alt="Example block output"/><p>Use <code>rand(BoundingBox())</code> to return a single point somewhere inside a bounding box.</p><h2 id="Noise"><a class="docs-heading-anchor" href="#Noise">Noise</a><a id="Noise-1"></a><a class="docs-heading-anchor-permalink" href="#Noise" title="Permalink"></a></h2><p>For artistic graphics you might prefer noisy input values to purely random ones. Use the <a href="../../reference/api/#Luxor.noise-Union{Tuple{Any}, Tuple{T}} where T&lt;:Integer"><code>noise</code></a> function to obtain smoothly changing random values corresponding to input coordinates. The returned values wander slowly rather than jump about everywhere.</p><p>In this example, the gray value varies gradually as the <a href="../../reference/api/#Luxor.noise-Union{Tuple{Any}, Tuple{T}} where T&lt;:Integer"><code>noise</code></a> function returns values between 0 and 1 depending on the location of the two input values <code>pos.x</code> and <code>pos.y</code>.</p><p>The top two quadrants use a lower value for the <code>detail</code> keyword argument, an integer ()&gt;= 1) specifying how many &quot;octaves&quot; of noise you want.</p><p>The left two quadrants use a lower value for the <code>persistence</code> keyword argument, a floating point number specifying how the amplitude diminishes for each successive level of detail. There is more fine detail when the persistence is higher, particularly when the <code>detail</code> setting is also high.</p><pre><code class="language-julia hljs">tiles = Tiler(800, 400, 200, 200)
+map(pt -&gt; circle(pt, 4, action = :fill), randompointarray(pt1, pt2, 200))</code></pre><img src="2cfd7ce8.svg" alt="Example block output"/><p>Use <code>rand(BoundingBox())</code> to return a single point somewhere inside a bounding box.</p><h2 id="Noise"><a class="docs-heading-anchor" href="#Noise">Noise</a><a id="Noise-1"></a><a class="docs-heading-anchor-permalink" href="#Noise" title="Permalink"></a></h2><p>For artistic graphics you might prefer noisy input values to purely random ones. Use the <a href="../../reference/api/#Luxor.noise-Union{Tuple{Any}, Tuple{T}} where T&lt;:Integer"><code>noise</code></a> function to obtain smoothly changing random values corresponding to input coordinates. The returned values wander slowly rather than jump about everywhere.</p><p>In this example, the gray value varies gradually as the <a href="../../reference/api/#Luxor.noise-Union{Tuple{Any}, Tuple{T}} where T&lt;:Integer"><code>noise</code></a> function returns values between 0 and 1 depending on the location of the two input values <code>pos.x</code> and <code>pos.y</code>.</p><p>The top two quadrants use a lower value for the <code>detail</code> keyword argument, an integer ()&gt;= 1) specifying how many &quot;octaves&quot; of noise you want.</p><p>The left two quadrants use a lower value for the <code>persistence</code> keyword argument, a floating point number specifying how the amplitude diminishes for each successive level of detail. There is more fine detail when the persistence is higher, particularly when the <code>detail</code> setting is also high.</p><pre><code class="language-julia hljs">tiles = Tiler(800, 400, 200, 200)
 sethue(&quot;black&quot;)
 for (pos, n) in tiles
     freq = 0.05
@@ -277,4 +281,4 @@ for (pos, n) in tiles
         persistence=pers)
     setgray(ns)
     box(pos, tiles.tilewidth, tiles.tileheight, action = :fillstroke)
-end</code></pre><p><img src="../../assets/figures/noise.png" alt="noise"/></p><p>Use <a href="../../reference/api/#Luxor.initnoise-Tuple{Any}"><code>initnoise</code></a> to initialize the noise behaviour.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../simplegraphics/">« Draw simple shapes</a><a class="docs-footer-nextpage" href="../tables-grids/">Work with tables and grids »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.2.1 on <span class="colophon-date" title="Saturday 27 January 2024 16:02">Saturday 27 January 2024</span>. Using Julia version 1.10.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+end</code></pre><p><img src="../../assets/figures/noise.png" alt="noise"/></p><p>Use <a href="../../reference/api/#Luxor.initnoise-Tuple{Any}"><code>initnoise</code></a> to initialize the noise behaviour.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../simplegraphics/">« Draw simple shapes</a><a class="docs-footer-nextpage" href="../tables-grids/">Work with tables and grids »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.3.0 on <span class="colophon-date" title="Thursday 28 March 2024 17:45">Thursday 28 March 2024</span>. Using Julia version 1.10.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
