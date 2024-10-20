@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Turtle graphics · Luxor</title><meta name="title" content="Turtle graphics · Luxor"/><meta property="og:title" content="Turtle graphics · Luxor"/><meta property="twitter:title" content="Turtle graphics · Luxor"/><meta name="description" content="Documentation for Luxor."/><meta property="og:description" content="Documentation for Luxor."/><meta property="twitter:description" content="Documentation for Luxor."/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/luxor-docs.css" rel="stylesheet" type="text/css"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Luxor logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Luxor</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Introduction to Luxor</a></li><li><input class="collapse-toggle" id="menuitem-2" type="checkbox" checked/><label class="tocitem" for="menuitem-2"><span class="docs-label">Tutorials</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../helloworld/">Hello World</a></li><li class="is-active"><a class="tocitem" href>Turtle graphics</a><ul class="internal"><li><a class="tocitem" href="#How-to-type-the-turtle-emoji"><span>How to type the turtle emoji</span></a></li><li><a class="tocitem" href="#A-very-simple-turtle-graphics-drawing"><span>A very simple turtle graphics drawing</span></a></li><li><a class="tocitem" href="#More-instructions"><span>More instructions</span></a></li><li><a class="tocitem" href="#Adding-new-commands"><span>Adding new commands</span></a></li><li><a class="tocitem" href="#More-turtles"><span>More turtles</span></a></li></ul></li><li><a class="tocitem" href="../basicpath/">Basic path building</a></li><li><a class="tocitem" href="../quickstart/">Design a logo</a></li><li><a class="tocitem" href="../basictutorial/">Geometry tutorial</a></li><li><a class="tocitem" href="../pixels/">Playing with pixels</a></li><li><a class="tocitem" href="../simple-animation/">Simple animation</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox"/><label class="tocitem" for="menuitem-3"><span class="docs-label">Examples</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../example/examples/">Simple examples</a></li><li><a class="tocitem" href="../../example/moreexamples/">More examples</a></li><li><a class="tocitem" href="../../example/gallery/">Gallery</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox"/><label class="tocitem" for="menuitem-4"><span class="docs-label">How to guides</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../howto/createdrawings/">Create drawings</a></li><li><a class="tocitem" href="../../howto/simplegraphics/">Draw simple shapes</a></li><li><a class="tocitem" href="../../howto/geometrytools/">Use geometry tools</a></li><li><a class="tocitem" href="../../howto/tables-grids/">Work with tables and grids</a></li><li><a class="tocitem" href="../../howto/colors-styles/">Use colors and styles</a></li><li><a class="tocitem" href="../../howto/polygons/">Work with polygons</a></li><li><a class="tocitem" href="../../howto/text/">Add text</a></li><li><a class="tocitem" href="../../howto/clipping/">Clip graphics</a></li><li><a class="tocitem" href="../../howto/images/">Placing images</a></li><li><a class="tocitem" href="../../howto/turtle/">Turtle graphics</a></li><li><a class="tocitem" href="../../howto/animation/">Make animations</a></li><li><a class="tocitem" href="../../howto/snapshots/">Snapshots</a></li><li><a class="tocitem" href="../../howto/livegraphics/">Interactive graphics and Threads</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Explanations</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../explanation/basics/">Basic concepts</a></li><li><a class="tocitem" href="../../explanation/pathspolygons/">Paths vs Polygon</a></li><li><a class="tocitem" href="../../explanation/perfectpixels/">Perfect pixels and antialising</a></li><li><a class="tocitem" href="../../explanation/transforms/">Transforms and matrices</a></li><li><a class="tocitem" href="../../explanation/imagematrix/">Image matrix</a></li><li><a class="tocitem" href="../../explanation/fonts/">Fonts on Linux</a></li><li><a class="tocitem" href="../../explanation/luxorcairo/">Luxor and Cairo</a></li><li><a class="tocitem" href="../../explanation/strokepathdispatch/">Customize strokepath/fillpath</a></li><li><a class="tocitem" href="../../explanation/contributing/">Contributing</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Reference</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../reference/functionindex/">Alphabetical function list</a></li><li><a class="tocitem" href="../../reference/api/">Function reference</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Tutorials</a></li><li class="is-active"><a href>Turtle graphics</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Turtle graphics</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaGraphics/Luxor.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaGraphics/Luxor.jl/blob/master/docs/src/tutorial/turtle.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Introducing-turtle-graphics"><a class="docs-heading-anchor" href="#Introducing-turtle-graphics">Introducing turtle graphics</a><a id="Introducing-turtle-graphics-1"></a><a class="docs-heading-anchor-permalink" href="#Introducing-turtle-graphics" title="Permalink"></a></h1><p><img src="../../assets/figures/turtle-splash.svg" alt="turtle splash"/></p><p>Luxor includes &quot;turtle graphics&quot;. This is a way of making drawings by steering an imaginary turtle around a 2D drawing surface. The turtle holds (somehow) a pen, and draws lines behind it, as it wanders around the drawing obeying your instructions.</p><h2 id="How-to-type-the-turtle-emoji"><a class="docs-heading-anchor" href="#How-to-type-the-turtle-emoji">How to type the turtle emoji</a><a id="How-to-type-the-turtle-emoji-1"></a><a class="docs-heading-anchor-permalink" href="#How-to-type-the-turtle-emoji" title="Permalink"></a></h2><p>Luxor&#39;s turtles have names. You can call your turtles anything. If you like, you can create and name your turtle with a suitable emoji:</p><pre><code class="language-julia hljs">using Luxor
+
+🐢 = Turtle() # type the turtle emoji \:turtle: TAB</code></pre><p>That&#39;s &quot;backslash colon turtle colon tab&quot; in VS-Code, for example. (It&#39;s Unicode character <code>U+1F422</code>.)</p><p>Or you can use any simple Julia variable name if you&#39;d prefer:</p><pre><code class="language-julia hljs">raphael = Turtle()</code></pre><p>Then, you create a new drawing, and give the turtle some instructions.</p><h2 id="A-very-simple-turtle-graphics-drawing"><a class="docs-heading-anchor" href="#A-very-simple-turtle-graphics-drawing">A very simple turtle graphics drawing</a><a id="A-very-simple-turtle-graphics-drawing-1"></a><a class="docs-heading-anchor-permalink" href="#A-very-simple-turtle-graphics-drawing" title="Permalink"></a></h2><p>Here&#39;s a very simple example:</p><pre><code class="language-julia hljs">using Luxor, Colors # hide
+@drawsvg begin
+    background(&quot;honeydew&quot;)
+    🐢 = Turtle()          # we create the turtle
+    Forward(🐢, 100)       # go forward by 100 &#39;steps&#39;
+    Turn(🐢, 90)           # turn 90° clockwise   
+    Forward(🐢, 100)       # go forward by 100 &#39;steps&#39;
+    Turn(🐢, 90)           # turn 90° clockwise  
+    Forward(🐢, 100)       # go forward by 100 &#39;steps&#39;    
+end</code></pre><p>Or - with the same result, without using the drawing-creation macro (which saves a few keystrokes):</p><pre><code class="language-julia hljs">Drawing(500, 500, :png)
+origin()
+background(&quot;honeydew&quot;)
+🐢 = Turtle()
+Forward(🐢, 100)
+Turn(🐢, 90)
+Forward(🐢, 100)
+Turn(🐢, 90)
+Forward(🐢, 100)
+finish()
+preview()</code></pre><img src="data:image/png;base64,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" alt="Example block output"/><ul><li><p><code>Forward(🐢, 100)</code> tells the turtle called 🐢 to move forward 100 units. It&#39;s moved across the drawing, to the right.</p></li><li><p><code>Turn(🐢, 90)</code> tells the turtle called 🐢 to turn through 90° (clockwise)</p></li></ul><p>and the two function calls are repeated, to give another line, and another turn, and another line.</p><p>Here&#39;s an animated view of how the image was made (I added the turtle):</p><p><img src="../../assets/figures/turtle-steps-1.gif" alt="turtle first steps"/></p><p>Even with just these two instructions, you can make the turtle draw quite interesting things:</p><p><img src="../../assets/figures/turtle-steps-2.gif" alt="turtle more steps"/></p><pre><code class="language-julia hljs">using Luxor, Colors # hide
+
+@drawsvg begin
+background(&quot;honeydew&quot;)
+🐢 = Turtle()
+for i in 1:200
+    Forward(🐢, 50 + i)
+    Turn(🐢, 85)
+end 
+end</code></pre><p>The smaller turn angle of 85° makes the pattern more interesting.</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>All the turtle instructions in Luxor.jl start with an uppercase letter. This isn&#39;t considered good practice in Julia code; initial capitalization is supposed to be restricted to module and type names. In Luxor, this bad habit (I was young once) at least helps to distinguish between turtle graphics commands and non-turtle graphics commands.</p></div></div><p>The idea of turtle graphics is that it&#39;s easy to build up complicated pictures just by repeating very simple instructions such as moving along a line and turning through angles.</p><p>Here&#39;s a function that draws a pentagon; move forward five times, turn through 72° after each move:</p><pre><code class="language-julia hljs">function a_pentagon(t::Turtle, s)
+    for i in 1:5
+        Forward(t, s)
+        Turn(t, 72.0)
+    end
+end
+
+@drawsvg begin
+    background(&quot;honeydew&quot;)
+    🐢 = Turtle()
+    Penwidth(🐢, 10)
+    Pencolor(🐢, &quot;red&quot;)
+    for i in 1:5
+        a_pentagon(🐢, 100.0)
+        HueShift(🐢, 30)
+        Turn(🐢, 72)
+    end
+end</code></pre><img src='data:image/svg+xml;utf-8,<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600" viewBox="0 0 600 600">
+<rect x="-60" y="-60" width="720" height="720" fill="rgb(94.117647%25, 100%25, 94.117647%25)" fill-opacity="1"/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 0%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 300 300 L 400 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 0%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 400 300 L 430.902344 395.105469 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 0%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 430.902344 395.105469 L 350 453.882812 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 0%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 350 453.882812 L 269.097656 395.105469 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 0%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 269.097656 395.105469 L 300 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 50%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 300 300 L 330.902344 395.105469 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 50%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 330.902344 395.105469 L 250 453.882812 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 50%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 250 453.882812 L 169.097656 395.105469 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 50%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 169.097656 395.105469 L 200 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 50%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 200 300 L 300 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 300 300 L 219.097656 358.777344 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 219.097656 358.777344 L 138.195312 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 138.195312 300 L 169.097656 204.894531 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 169.097656 204.894531 L 269.097656 204.894531 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 269.097656 204.894531 L 300 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 300 300 L 219.097656 241.222656 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 219.097656 241.222656 L 250 146.117188 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 250 146.117188 L 350 146.117188 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 350 146.117188 L 380.902344 241.222656 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(50%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 380.902344 241.222656 L 300 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 300 300 L 330.902344 204.894531 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 330.902344 204.894531 L 430.902344 204.894531 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 430.902344 204.894531 L 461.804688 300 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 461.804688 300 L 380.902344 358.777344 "/>
+<path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%25, 100%25, 0%25)" stroke-opacity="1" stroke-miterlimit="10" d="M 380.902344 358.777344 L 300 300 "/>
+</svg>
+'/><p>After the first pentagon is drawn by <code>a_pentagon</code>, the turtle rotates 72° - so the next pentagon doesn&#39;t overlap the previous one. We&#39;ve used <code>HueShift()</code> as well, so that each pentagon is drawn in a different color, starting with redw.</p><h2 id="More-instructions"><a class="docs-heading-anchor" href="#More-instructions">More instructions</a><a id="More-instructions-1"></a><a class="docs-heading-anchor-permalink" href="#More-instructions" title="Permalink"></a></h2><p>Turtles understand more instructions than just <code>Forward</code> and <code>Turn</code>:</p><ul><li><code>Pendown(🐢)</code> (the default)</li><li><code>Penup(🐢)</code>  lift the pen from the drawing</li><li><code>Pencolor(🐢, r, g, b)</code> change the color (default is (0, 0, 0) or &quot;black&quot;)</li><li><code>Penwidth(🐢, w)</code> change the pen width to <code>w</code></li><li><code>Circle(🐢, r)</code> draw a filled circle with radius <code>r</code></li><li><code>Orientation(🐢, θ)</code> face θ°</li><li><code>Rectangle(🐢, w, h)</code> draw a rectangle with width <code>w</code> and height <code>h</code></li><li><code>Reposition(🐢, pt)</code> move the turtle to a new location point </li><li><code>Message(🐢, t)</code> draw the text in <code>t</code></li><li><code>HueShift(🐢, h)</code> change the hue of the pen&#39;s color by a <code>h</code>, or a small amount</li></ul><p>plus a few more.</p><p>All these require a turtle name as the first argument. The full list is here: <a href="../../howto/turtle/#Turtle-graphics">Turtle graphics</a>.</p><p>This next drawing is also simple, but the gradual shifting hue - again thanks to <code>HueShift()</code> - is effective:</p><pre><code class="language-julia hljs">using Luxor, Colors
+function draw_graphics()
+    🐢 = Turtle()
+    Pencolor(🐢, &quot;cyan&quot;)
+    Penwidth(🐢, 1.5)
+    n = 5
+    for i in 1:400
+        Forward(🐢, n)
+        Turn(🐢, 89.5)
+        HueShift(🐢)
+        n += 1
+    end
+    fontsize(40)
+    Reposition(🐢, Point(-250, -250))
+    Pencolor(🐢, 1.0, 0.5, 0.0)
+    Message(🐢, &quot;finished&quot;)
+end
+
+@drawsvg begin
+    draw_graphics()
+end</code></pre><img src="0fa6645a.svg" alt="Example block output"/><p>You don&#39;t have to restrict yourself to drawing lines. With <code>Circle()</code> and <code>Rectangle()</code> you can create all kinds of images. </p><p>Here&#39;s a visualization of two ways to draw the Julia logo with a turtle.</p><p><img src="../../assets/figures/turtle-logo-comparison.gif" alt="comparing two methods"/></p><p>The version on the left is drawn by the turtle on a journey:</p><pre><code class="language-julia hljs">using Luxor, Colors # hide
+
+@drawsvg begin
+    colors = [Luxor.julia_purple, Luxor.julia_red, Luxor.julia_green]
+    🐢 = Turtle()
+    S = 50
+    Penup(🐢)
+    Turn(🐢, 30) ; Forward(🐢, S) ; 
+        Pencolor(🐢, colors[1]); Pendown(🐢) ; 
+        Circle(🐢, 40) ; Penup(🐢)
+    Turn(🐢, 150) ; Forward(🐢, 2S) ; 
+        Pencolor(🐢, colors[2]) ; Pendown(🐢) ; 
+        Circle(🐢, 40) ; Penup(🐢)
+    Turn(🐢, 120) ; Forward(🐢, 2S) ; 
+        Pencolor(🐢, colors[3]) ; Pendown(🐢) ; 
+        Circle(🐢, 40) ; Penup(🐢)
+end </code></pre><p>THe version on the right repeats the same action three times:</p><pre><code class="language-julia hljs">using Luxor, Colors # hide
+
+@drawsvg begin
+    colors = [Luxor.julia_purple, Luxor.julia_red, Luxor.julia_green]
+    🐢 = Turtle()
+    for i in 1:3
+        Push(🐢)
+        Orientation(🐢, [30, 150, 270][i])
+        Penup(🐢)
+        Forward(🐢, 120)
+        Pencolor(🐢, colors[i])
+        Pendown(🐢)
+        Circle(🐢, 80)
+        Pop(🐢)    
+    end
+end</code></pre><p>The <code>Push()</code> instruction tells the turtle to remember the current position and rotation on a <em>stack</em> and continue. <code>Pop()</code> gets information from the stack and then teleports the turtle to that position and orientation - forgetting where it was and where it was heading. This way, the same task - turn-forward-pencolor-pendown-circle - is easily repeated in different directions.</p><h2 id="Adding-new-commands"><a class="docs-heading-anchor" href="#Adding-new-commands">Adding new commands</a><a id="Adding-new-commands-1"></a><a class="docs-heading-anchor-permalink" href="#Adding-new-commands" title="Permalink"></a></h2><p>There&#39;s isn&#39;t a <code>Back()</code> instruction as you might expect - because it&#39;s not clear how it should work. For example, is it like putting a car in reverse and reversing, when you don&#39;t change the direction you&#39;re facing, or is it like turning through 180° and then going forward? And do you turn round afterwards?. But it&#39;s easy to add your own <code>Back()</code> command that does exactly what you want it to:</p><pre><code class="language-julia hljs">function Back(t::Turtle, n)
+    Turn(t, 180)
+    Forward(t, n)
+    Turn(t, 180) # looking forward again
+end
+
+function draw_graphics(🐢::Turtle)
+    for i in 1:8
+        Forward(🐢, 150)
+        Circle(🐢, 15)
+        Back(🐢, 100)
+        Turn(🐢, 45)
+        HueShift(🐢, 30)
+        Circle(🐢, 5)
+    end
+end
+
+@drawsvg begin
+    background(&quot;black&quot;)
+    🐢 = Turtle()
+    Penwidth(🐢, 30)
+    Pencolor(🐢, &quot;blue&quot;)
+    draw_graphics(🐢)
+end</code></pre><img src="8752acc6.svg" alt="Example block output"/><h2 id="More-turtles"><a class="docs-heading-anchor" href="#More-turtles">More turtles</a><a id="More-turtles-1"></a><a class="docs-heading-anchor-permalink" href="#More-turtles" title="Permalink"></a></h2><p>Here&#39;s the code for the abstract splash image at the top of this section:</p><pre><code class="language-julia hljs">using Luxor, Colors
+Drawing(800, 300, &quot;/tmp/turtles.svg&quot;)
+origin()
+background(&quot;black&quot;)
+turtles = Turtle[]
+for i in 1:100
+    turtle = Turtle(rand(BoundingBox()))
+    Pencolor(turtle, HSL(30rand(), 0.8, 0.7))
+    Orientation(turtle, 360rand())
+    Penwidth(turtle, .5)
+    push!(turtles, turtle)
+    for t in turtles
+        HueShift(t, 5)
+        Forward(t, rand(5:10))
+        Turn(t, rand(-15:15))
+        rand(Bool) ? Circle(t, 2) : Rectangle(t, 2, 2)
+        Pen_opacity_random(t)
+        pt = Point(t.xpos, t.ypos)
+        if !isinside(pt, box(BoundingBox()))
+            Towards(t, Point(0, 0))
+        end
+    end
+end
+finish()
+preview()</code></pre><p>This code generates a hundred turtles in random positions and moves and turns them randomly. When a turtle reaches the edge, its orientation is changed so that it  points to the center.</p><p>If you enjoy drawing with turtles, you might enjoy the <a href="https://github.com/cormullion/Lindenmayer.jl">Lindenmayer.jl</a> package.</p><pre><code class="language-julia hljs">using Lindenmayer
+using Luxor
+using Colors
+
+@draw begin
+    background(&quot;black&quot;)
+    setlinecap(&quot;round&quot;)
+    penrose = LSystem([&quot;X&quot; =&gt; &quot;PM++QM----YM[-PM----XM]++t&quot;,
+            &quot;Y&quot; =&gt; &quot;+PM--QM[---XM--YM]+t&quot;,
+            &quot;P&quot; =&gt; &quot;-XM++YM[+++PM++QM]-t&quot;,
+            &quot;Q&quot; =&gt; &quot;--PM++++XM[+QM++++YM]--YMt&quot;,
+            &quot;M&quot; =&gt; &quot;F&quot;,
+            &quot;F&quot; =&gt; &quot;&quot;],
+        &quot;[Y]++[Y]++[Y]++[Y]++[Y]&quot;)
+
+    # evaluate the LSystem
+    Lindenmayer.evaluate(penrose, 5)
+
+    # create a turtle
+    🐢 = Turtle(colorant&quot;purple&quot;)
+    Penwidth(🐢, 5)
+    Pencolor(🐢, &quot;cyan&quot;)
+
+    # render the LSystem&#39;s evaluation to the drawing 
+    # forward 35, turn angle 36
+    Lindenmayer.render(penrose, 🐢, 35, 36)
+end</code></pre><p><img src="../../assets/figures/penrose.svg" alt="penrose"/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../helloworld/">« Hello World</a><a class="docs-footer-nextpage" href="../basicpath/">Basic path building »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.7.0 on <span class="colophon-date" title="Sunday 20 October 2024 18:04">Sunday 20 October 2024</span>. Using Julia version 1.11.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
