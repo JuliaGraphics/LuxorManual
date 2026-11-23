@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Add text · Luxor</title><meta name="title" content="Add text · Luxor"/><meta property="og:title" content="Add text · Luxor"/><meta property="twitter:title" content="Add text · Luxor"/><meta name="description" content="Documentation for Luxor."/><meta property="og:description" content="Documentation for Luxor."/><meta property="twitter:description" content="Documentation for Luxor."/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/luxor-docs.css" rel="stylesheet" type="text/css"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="Luxor logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Luxor</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Introduction to Luxor</a></li><li><input class="collapse-toggle" id="menuitem-2" type="checkbox"/><label class="tocitem" for="menuitem-2"><span class="docs-label">Tutorials</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../tutorial/helloworld/">Hello World</a></li><li><a class="tocitem" href="../../tutorial/turtle/">Turtle graphics</a></li><li><a class="tocitem" href="../../tutorial/basicpath/">Basic path building</a></li><li><a class="tocitem" href="../../tutorial/quickstart/">Design a logo</a></li><li><a class="tocitem" href="../../tutorial/basictutorial/">Geometry tutorial</a></li><li><a class="tocitem" href="../../tutorial/pixels/">Playing with pixels</a></li><li><a class="tocitem" href="../../tutorial/simple-animation/">Simple animation</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-3" type="checkbox"/><label class="tocitem" for="menuitem-3"><span class="docs-label">Examples</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../example/examples/">Simple examples</a></li><li><a class="tocitem" href="../../example/moreexamples/">More examples</a></li><li><a class="tocitem" href="../../example/gallery/">Gallery</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-4" type="checkbox" checked/><label class="tocitem" for="menuitem-4"><span class="docs-label">How to guides</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../createdrawings/">Create drawings</a></li><li><a class="tocitem" href="../simplegraphics/">Draw simple shapes</a></li><li><a class="tocitem" href="../geometrytools/">Use geometry tools</a></li><li><a class="tocitem" href="../tables-grids/">Work with tables and grids</a></li><li><a class="tocitem" href="../colors-styles/">Use colors and styles</a></li><li><a class="tocitem" href="../polygons/">Work with polygons</a></li><li class="is-active"><a class="tocitem" href>Add text</a><ul class="internal"><li><a class="tocitem" href="#A-tale-of-two-APIs"><span>A tale of two APIs</span></a></li><li><a class="tocitem" href="#Specifying-the-font-(&quot;Toy&quot;-API)"><span>Specifying the font (&quot;Toy&quot; API)</span></a></li><li><a class="tocitem" href="#Specifying-the-font-(&quot;Pro&quot;-API)"><span>Specifying the font (&quot;Pro&quot; API)</span></a></li><li><a class="tocitem" href="#Placing-text-(&quot;Toy&quot;-API)"><span>Placing text (&quot;Toy&quot; API)</span></a></li><li><a class="tocitem" href="#Placing-text-(&quot;Pro&quot;-API)"><span>Placing text (&quot;Pro&quot; API)</span></a></li><li><a class="tocitem" href="#Writing-LaTeX-and-Typst"><span>Writing LaTeX and Typst</span></a></li><li><a class="tocitem" href="#Notes-on-fonts"><span>Notes on fonts</span></a></li><li><a class="tocitem" href="#Text-to-paths"><span>Text to paths</span></a></li><li><a class="tocitem" href="#Text-and-font-dimensions-(&quot;Toy&quot;-API-only)"><span>Text and font dimensions (&quot;Toy&quot; API only)</span></a></li><li><a class="tocitem" href="#Labels"><span>Labels</span></a></li><li><a class="tocitem" href="#Text-on-a-circle"><span>Text on a circle</span></a></li><li><a class="tocitem" href="#Text-on-a-polygon"><span>Text on a polygon</span></a></li><li><a class="tocitem" href="#Text-clipping"><span>Text clipping</span></a></li><li><a class="tocitem" href="#Text-blocks,-boxes,-and-wrapping"><span>Text blocks, boxes, and wrapping</span></a></li><li><a class="tocitem" href="#Text-formatting"><span>Text formatting</span></a></li><li><a class="tocitem" href="#Text-tracking"><span>Text tracking</span></a></li><li><a class="tocitem" href="#Text-fitting"><span>Text fitting</span></a></li><li><a class="tocitem" href="#Animating-text"><span>Animating text</span></a></li></ul></li><li><a class="tocitem" href="../clipping/">Clip graphics</a></li><li><a class="tocitem" href="../images/">Placing images</a></li><li><a class="tocitem" href="../turtle/">Turtle graphics</a></li><li><a class="tocitem" href="../animation/">Make animations</a></li><li><a class="tocitem" href="../snapshots/">Snapshots</a></li><li><a class="tocitem" href="../livegraphics/">Interactive graphics and Threads</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-5" type="checkbox"/><label class="tocitem" for="menuitem-5"><span class="docs-label">Explanations</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../explanation/basics/">Basic concepts</a></li><li><a class="tocitem" href="../../explanation/pathspolygons/">Paths vs Polygon</a></li><li><a class="tocitem" href="../../explanation/perfectpixels/">Perfect pixels and antialising</a></li><li><a class="tocitem" href="../../explanation/transforms/">Transforms and matrices</a></li><li><a class="tocitem" href="../../explanation/imagematrix/">Image matrix</a></li><li><a class="tocitem" href="../../explanation/fonts/">Fonts on Linux</a></li><li><a class="tocitem" href="../../explanation/luxorcairo/">Luxor and Cairo</a></li><li><a class="tocitem" href="../../explanation/strokepathdispatch/">Customize strokepath/fillpath</a></li><li><a class="tocitem" href="../../explanation/contributing/">Contributing</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-6" type="checkbox"/><label class="tocitem" for="menuitem-6"><span class="docs-label">Reference</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../reference/functionindex/">Alphabetical function list</a></li><li><a class="tocitem" href="../../reference/api/">Function reference</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">How to guides</a></li><li class="is-active"><a href>Add text</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Add text</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/JuliaGraphics/Luxor.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/JuliaGraphics/Luxor.jl/blob/master/docs/src/howto/text.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Text-and-fonts"><a class="docs-heading-anchor" href="#Text-and-fonts">Text and fonts</a><a id="Text-and-fonts-1"></a><a class="docs-heading-anchor-permalink" href="#Text-and-fonts" title="Permalink"></a></h1><h2 id="A-tale-of-two-APIs"><a class="docs-heading-anchor" href="#A-tale-of-two-APIs">A tale of two APIs</a><a id="A-tale-of-two-APIs-1"></a><a class="docs-heading-anchor-permalink" href="#A-tale-of-two-APIs" title="Permalink"></a></h2><p>There are two ways to draw text in Luxor. You can use either the so-called &#39;toy&#39; API or the &#39;pro&#39; API. Both have their advantages and disadvantages. Also, font selection and availability varies a lot across the three operating systems. You may have to experiment to find code patterns that work for you.</p><h4 id="The-Toy-API"><a class="docs-heading-anchor" href="#The-Toy-API">The Toy API</a><a id="The-Toy-API-1"></a><a class="docs-heading-anchor-permalink" href="#The-Toy-API" title="Permalink"></a></h4><p>Use:</p><ul><li><code>text(string, [position])</code> to place text at a position, otherwise at <code>0/0</code>, and optionally specify the horizontal and vertical alignment</li><li><code>fontface(fontname)</code> to specify the fontname</li><li><code>fontsize(fontsize)</code> to specify the fontsize</li></ul><pre><code class="language-julia hljs">fontsize(16)
+fontface(&quot;Georgia-Bold&quot;)
+text(&quot;Georgia: a serif typeface designed in 1993 by Matthew Carter.&quot;, halign=:center)</code></pre><p><img src="../../assets/figures/toy-text-example.png" alt="text placement"/></p><p>(If the specified font is unavailable on the current system configuration, the default, usually Times/Helvetica or DejaVu, is used.)</p><p>The <a href="../../reference/api/#Luxor.label"><code>label</code></a> function also uses the Toy API.</p><h4 id="The-Pro-API"><a class="docs-heading-anchor" href="#The-Pro-API">The Pro API</a><a id="The-Pro-API-1"></a><a class="docs-heading-anchor-permalink" href="#The-Pro-API" title="Permalink"></a></h4><p>Use:</p><ul><li><code>setfont(fontname, fontsize)</code> to specify the fontname and size</li><li><code>settext(text, [position])</code> to place the text at a position, and optionally specify horizontal and vertical alignment, rotation (in degrees counterclockwise!), and the presence of any pseudo-Pango-flavored markup.</li></ul><pre><code class="language-julia hljs">setfont(&quot;Georgia Bold&quot;, 16)
+settext(&quot;Georgia: a serif typeface designed in 1993 by Matthew Carter.&quot;, halign=&quot;center&quot;)</code></pre><p><img src="../../assets/figures/pro-text-example.png" alt="text placement"/></p><h2 id="Specifying-the-font-(&quot;Toy&quot;-API)"><a class="docs-heading-anchor" href="#Specifying-the-font-(&quot;Toy&quot;-API)">Specifying the font (&quot;Toy&quot; API)</a><a id="Specifying-the-font-(&quot;Toy&quot;-API)-1"></a><a class="docs-heading-anchor-permalink" href="#Specifying-the-font-(&quot;Toy&quot;-API)" title="Permalink"></a></h2><p>Use <code>fontface(fontname)</code> to choose a font, and <code>fontsize(n)</code> to set the font size. <a href="../../reference/api/#Luxor.get_fontsize-Tuple{}"><code>get_fontsize</code></a> finds the current font size.</p><h2 id="Specifying-the-font-(&quot;Pro&quot;-API)"><a class="docs-heading-anchor" href="#Specifying-the-font-(&quot;Pro&quot;-API)">Specifying the font (&quot;Pro&quot; API)</a><a id="Specifying-the-font-(&quot;Pro&quot;-API)-1"></a><a class="docs-heading-anchor-permalink" href="#Specifying-the-font-(&quot;Pro&quot;-API)" title="Permalink"></a></h2><p>To select a font in the Pro text API, use <a href="../../reference/api/#Luxor.setfont-Tuple{AbstractString, Any}"><code>setfont</code></a> and supply both the font name and a size.</p><h2 id="Placing-text-(&quot;Toy&quot;-API)"><a class="docs-heading-anchor" href="#Placing-text-(&quot;Toy&quot;-API)">Placing text (&quot;Toy&quot; API)</a><a id="Placing-text-(&quot;Toy&quot;-API)-1"></a><a class="docs-heading-anchor-permalink" href="#Placing-text-(&quot;Toy&quot;-API)" title="Permalink"></a></h2><p>Use <a href="../../reference/api/#Luxor.text-Tuple{AbstractString, Point}"><code>text</code></a> to place a string. The left edge is placed at the origin, by default. Or you can supply a position. Use <code>halign</code> and/or <code>valign</code> to align the string at the position.</p><pre><code class="language-julia hljs">pt1 = Point(-100, 0)
+pt2 = Point(0, 0)
+pt3 = Point(100, 0)
+sethue(&quot;white&quot;)
+text(&quot;text 1&quot;,  pt1, halign=:left,   valign = :bottom)
+text(&quot;text 2&quot;,  pt2, halign=:center, valign = :bottom)
+text(&quot;text 3&quot;,  pt3, halign=:right,  valign = :bottom)
+text(&quot;text 4&quot;,  pt1, halign=:left,   valign = :top)
+text(&quot;text 5&quot;,  pt2, halign=:center, valign = :top)
+text(&quot;text 6&quot;,  pt3, halign=:right,  valign = :top)
+sethue(&quot;red&quot;)
+map(p -&gt; circle(p, 5, :fill), [pt1, pt2, pt3])</code></pre><img src="a2728a9c.svg" alt="Example block output"/><pre><code class="language-julia hljs">sethue(&quot;black&quot;) # hide
+fontsize(10)
+fontface(&quot;Georgia&quot;)
+[text(string(θ), Point(40cos(θ), 40sin(θ)), angle=θ) for θ in 0:π/12:47π/24]</code></pre><p><img src="../../assets/figures/text-rotation.png" alt="text rotation"/></p><h2 id="Placing-text-(&quot;Pro&quot;-API)"><a class="docs-heading-anchor" href="#Placing-text-(&quot;Pro&quot;-API)">Placing text (&quot;Pro&quot; API)</a><a id="Placing-text-(&quot;Pro&quot;-API)-1"></a><a class="docs-heading-anchor-permalink" href="#Placing-text-(&quot;Pro&quot;-API)" title="Permalink"></a></h2><p>Use <a href="../../reference/api/#Luxor.settext-Tuple{AbstractString, Point}"><code>settext</code></a> to place text. You can include some pseudo-HTML markup with the keyword argument <code>markup=true</code>.</p><pre><code class="language-julia hljs">rulers()
+sethue(&quot;black&quot;)
+settext(&quot;&lt;span font=&#39;26&#39; background =&#39;green&#39; foreground=&#39;red&#39;&gt; Hey&lt;/span&gt;
+    &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt; &lt;sup&gt;superscript&lt;/sup&gt;
+    &lt;tt&gt;monospaced&lt;/tt&gt;&quot;,
+    halign=&quot;center&quot;,
+    markup=true,
+    angle=10) # degrees counterclockwise!</code></pre><p><img src="../../assets/figures/pro-text-placement.png" alt="pro text placement"/></p><h2 id="Writing-LaTeX-and-Typst"><a class="docs-heading-anchor" href="#Writing-LaTeX-and-Typst">Writing LaTeX and Typst</a><a id="Writing-LaTeX-and-Typst-1"></a><a class="docs-heading-anchor-permalink" href="#Writing-LaTeX-and-Typst" title="Permalink"></a></h2><p>Luxor allows you to use LaTeX to add equations to drawings, and Typst to add equations and other typeset text to drawings.</p><h3 id="LaTeX"><a class="docs-heading-anchor" href="#LaTeX">LaTeX</a><a id="LaTeX-1"></a><a class="docs-heading-anchor-permalink" href="#LaTeX" title="Permalink"></a></h3><p>It&#39;s possible to write math equations in <span>$\LaTeX$</span> by passing a <code>LaTeXString</code> to the <code>text</code> function. Luxor uses <a href="https://github.com/Kolaru/MathTeXEngine.jl">MathTeXEngine.jl</a> to parse the <code>LaTeXString</code>. You should load MathTeXEngine.jl (<code>using MathTeXEngine</code>) before accessing this feature.</p><div class="admonition is-info" id="Note-c83ef05406e18541"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-c83ef05406e18541" title="Permalink"></a></header><div class="admonition-body"><p>MathTeXEngine.jl is a package that renders many <code>LaTeXString</code>s without requiring a <span>$\LaTeX$</span> compiler. The package uses the fonts <em>Computer Modern</em> and <em>New Computer Modern</em>. They&#39;re included with the MathTeXEngine package, and you can find them in your <code>julia</code> folder in <code>packages/MathTeXEngine/.../assets/fonts</code>. You should make sure these have been copied to your system&#39;s font directories before running Luxor and writing <span>$\LaTeX$</span> strings.</p></div></div><pre><code class="language-julia hljs">using Luxor
+using MathTeXEngine
+path_svg = &quot;latexexample.svg&quot;
+Drawing(600, 400, path_svg)
+origin()
+background(&quot;grey6&quot;)
+fontsize(26)
+sethue(&quot;white&quot;)
+t₁ = L&quot;e^{i\pi} + 1 = 0&quot;
+t₂ = L&quot;e^x = \sum^\infty_{n=0} \frac{x^n}{n!} = \lim_{n\to\infty}(1+\frac{x}{n})^n&quot;
+t₃ = L&quot;\cos(\theta)&quot;
+
+text(t₁, Point(0, -100), halign=:center, valign=:baseline, angle=0)
+text(t₂, Point(0, -20), halign=:center, valign=:top, angle=0)
+
+line(Point(0, 132), Point(50, 132), action = :stroke)
+line(Point(0, 132), Point(50cos(π/4), 132 - 50sin(π/4)), action = :stroke)
+
+fontsize(18)
+text(t₃, Point(0, 120), halign = :left, valign = :baseline, angle = -π/4, rotationfixed = false)
+finish()</code></pre><p><img src="../../assets/figures/latexexample.svg" alt="textbox"/></p><div class="admonition is-info" id="Note-e882aca173e60e79"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-e882aca173e60e79" title="Permalink"></a></header><div class="admonition-body"><p>The string macros in the <a href="https://github.com/stevengj/LaTeXStrings.jl">LaTeXStrings.jl</a> package allow you to enter LaTeX equations without having to escape backslashes and dollar signs (and they&#39;ll add the dollar signs for you if you omit them).</p></div></div><h3 id="Typst"><a class="docs-heading-anchor" href="#Typst">Typst</a><a id="Typst-1"></a><a class="docs-heading-anchor-permalink" href="#Typst" title="Permalink"></a></h3><p>You can use <a href="https://typst.app">Typst</a> to add equations and other typeset text to Luxor drawings. This feature is provided by the Julia package <a href="https://github.com/jakobjpeters/Typstry.jl">Typstry.jl</a>.</p><pre><code class="language-julia hljs">using Luxor
+using Typstry
+
+ts = typst&quot;&quot;&quot; $a + b/c = sum_i x^i $&quot;&quot;&quot;;
+
+ty_preamble = typst&quot;&quot;&quot;
+#set page(fill: rgb(&quot;#eeffdd&quot;), height: 200pt, width: 400pt, margin: 0pt);
+#set text(fill: purple, size: 60pt)
+&quot;&quot;&quot;
+
+@draw begin
+    text(ts, O, preamble=ty_preamble, centered=true)
+end</code></pre><p><img src="../../assets/figures/typst.svg" alt="typst example"/></p><p>In this example, the string in <code>ts</code> is a TypstString containing the equation to be typeset. The contents of <code>ty_preamble</code> passed as the <code>preamble</code> keyword argument is also a TypstString. It contains general formatting instructions for the Typst document. It can be omitted, and the default preamble is used.</p><h4 id="Multipage-Typst-documents"><a class="docs-heading-anchor" href="#Multipage-Typst-documents">Multipage Typst documents</a><a id="Multipage-Typst-documents-1"></a><a class="docs-heading-anchor-permalink" href="#Multipage-Typst-documents" title="Permalink"></a></h4><p>The <code>render_typst_document()</code> function converts a TypstString containing the source for a Typst document into an array of SVGimages. Each page is saved as a single SVG image. You can place any or all of these on the Luxor drawing with <code>placeimage()</code>.</p><pre><code class="language-julia hljs">using Luxor
+using Typstry
+
+ts = typst&quot;&quot;&quot;
+#set text(size: 12pt, fill: black)
+#set page(numbering: &quot;1&quot;, 
+    fill: none, 
+    height: 240pt, width: 240pt)
+#lorem(200)
+#rect(width: 1em, height: 1em, fill: red)
+&quot;&quot;&quot;
+
+@draw begin
+    pages = render_typst_document(ts)
+    centers = first.(Tiler(600, 600, 2, 2))
+    for n in eachindex(pages)
+        n &gt; length(centers) &amp;&amp; break
+        @layer begin
+            setopacity(0.2)
+            randomhue()
+            box(centers[n], 250, 250, :fill)
+        end
+        @layer begin
+            placeimage(pages[n], centers[n], centered=true)
+        end
+    end
+end</code></pre><p><img src="../../assets/figures/typst2.png" alt="typst example 2 "/></p><h2 id="Notes-on-fonts"><a class="docs-heading-anchor" href="#Notes-on-fonts">Notes on fonts</a><a id="Notes-on-fonts-1"></a><a class="docs-heading-anchor-permalink" href="#Notes-on-fonts" title="Permalink"></a></h2><p>Fonts are loaded when you first start using Luxor/Cairo in a Julia session. This partly explains why starting a Luxor/Cairo session can take a few seconds.</p><p>On macOS, the fontname required by the Toy API&#39;s <a href="../../reference/api/#Luxor.fontface-Tuple{Any}"><code>fontface</code></a> should be the PostScript name of a currently activated font. You can find this out using, for example, the FontBook application.</p><p>On macOS, a list of currently activated fonts can be found (after a while) with the shell command:</p><pre><code class="language-bash hljs">system_profiler SPFontsDataType</code></pre><p>Fonts currently activated by a Font Manager can be found and used by the Toy API but not by the Pro API (at least on my macOS computer currently).</p><p>On macOS, you can obtain a list of fonts that <code>fontconfig</code> considers are installed and available for use (via the Pro Text API with <a href="../../reference/api/#Luxor.setfont-Tuple{AbstractString, Any}"><code>setfont</code></a>) using the shell command:</p><pre><code class="language-bash hljs">fc-list | cut -f 2 -d &quot;:&quot;</code></pre><p>although typically this lists only those fonts in <code>/System/Library/Fonts</code> and <code>/Library/Fonts</code>, and not <code>~/Library/Fonts</code>.</p><p>(There is a Julia interface to <code>fontconfig</code> at <a href="https://github.com/JuliaGraphics/Fontconfig.jl">Fontconfig.jl</a>. See also <a href="https://github.com/JuliaGraphics/FreeTypeAbstraction.jl">FreeTypeAbstraction.jl</a>)</p><p>In the Pro API, the default font is Times Roman (on macOS). In the Toy API, the default font is Helvetica (on macOS).</p><p>One difference between <a href="../../reference/api/#Luxor.settext-Tuple{AbstractString, Point}"><code>settext</code></a> and <a href="../../reference/api/#Luxor.text-Tuple{AbstractString, Point}"><code>text</code></a> (on macOS) is that many more missing Unicode glyphs are automatically substituted by other fonts when you use the former.</p><p>Cairo.jl (and hence Luxor.jl) doesn&#39;t support emoji currently. 😢 But you can use <a href="#Typst">Typst</a> () to render text containing emojis.</p><p>Text is rasterized (converted from outlines to pixels) only when you output to the PNG format. For SVG formats, text is converted to outlines (curves and lines). For PDF and EPS formats, the fonts you use are stored inside the output file (&quot;embedded&quot;), and the text is displayed using that font only when the file is viewed.</p><p>For PNG files, the appearance of fonts when output is controlled to some extent by the operating system. For example, on Windows, if ClearType is active, differently-colored pixels are used to display fonts, because of the use of subpixel rendering. These colored pixels will be visible in the PNG output.</p><h2 id="Text-to-paths"><a class="docs-heading-anchor" href="#Text-to-paths">Text to paths</a><a id="Text-to-paths-1"></a><a class="docs-heading-anchor-permalink" href="#Text-to-paths" title="Permalink"></a></h2><p><code>textoutlines(string, position)</code> converts the text into graphic path(s), places them starting at <code>position</code>, and applies the <code>action</code>.</p><pre><code class="language-julia hljs">fontface(&quot;Times-Roman&quot;)
+fontsize(500)
+setline(4)
+sethue(&quot;maroon2&quot;)
+textoutlines(&quot;&amp;&quot;, O, :path, valign=:middle, halign=:center)
+fillpreserve()
+sethue(&quot;black&quot;)
+strokepath()</code></pre><p><img src="../../assets/figures/textoutlines.png" alt="text outlines"/></p><p><a href="../../reference/api/#Luxor.textpath-Tuple{AbstractString, Point}"><code>textpath</code></a> converts the text into graphic paths suitable for further manipulation.</p><p><code>textpath</code> preserves the Bézier curves, whereas <code>textoutlines</code> flattens all curves and converts them to polygons.</p><h2 id="Text-and-font-dimensions-(&quot;Toy&quot;-API-only)"><a class="docs-heading-anchor" href="#Text-and-font-dimensions-(&quot;Toy&quot;-API-only)">Text and font dimensions (&quot;Toy&quot; API only)</a><a id="Text-and-font-dimensions-(&quot;Toy&quot;-API-only)-1"></a><a class="docs-heading-anchor-permalink" href="#Text-and-font-dimensions-(&quot;Toy&quot;-API-only)" title="Permalink"></a></h2><p>The <code>textextents(str)</code> function returns the dimensions of the string <code>str</code>, given the current font. There has to be a current drawing before this function is called.</p><p><code>width</code> and <code>height</code> are stored in elements 3 and 4. The first two elements are the offsets (&quot;bearings&quot;) from the reference point (green) to the bounding box. The last two elements determine where the next (&quot;advance&quot;) character should start (blue).</p><p><img src="../../assets/figures/textextents.png" alt="textextents"/></p><div class="admonition is-info" id="Note-8bf3cebd12732b5d"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-8bf3cebd12732b5d" title="Permalink"></a></header><div class="admonition-body"><p>There is currently no equivalent of this function for the &quot;Pro&quot; API.</p></div></div><h2 id="Labels"><a class="docs-heading-anchor" href="#Labels">Labels</a><a id="Labels-1"></a><a class="docs-heading-anchor-permalink" href="#Labels" title="Permalink"></a></h2><p>The <a href="../../reference/api/#Luxor.label"><code>label</code></a> function places text relative to a specific point, and you can use compass points or angles to indicate where it should be. So <code>:N</code> (for North) places a text label directly above the point, as does <code>3π/2</code>.</p><pre><code class="language-julia hljs">fontsize(15)
+octagon = ngon(O, 100, 8, 0, vertices=true)
+
+compass = [:SE, :S, :SW, :W, :NW, :N, :NE, :E, :SE]
+
+for i in 1:8
+    circle(octagon[i], 5, :fill)
+    label(string(compass[i]), compass[i], octagon[i], leader=true, leaderoffsets=[0.2, 0.9], offset=50)
+end</code></pre><p><img src="../../assets/figures/labels.png" alt="labels"/></p><h2 id="Text-on-a-circle"><a class="docs-heading-anchor" href="#Text-on-a-circle">Text on a circle</a><a id="Text-on-a-circle-1"></a><a class="docs-heading-anchor-permalink" href="#Text-on-a-circle" title="Permalink"></a></h2><p>Use <code>textcurve(str)</code> to draw a string <code>str</code> on a circular arc or spiral.</p><pre><code class="language-julia hljs">sethue(&quot;royalblue4&quot;) # hide
+fontsize(7)
+fontface(&quot;Menlo&quot;)
+textstring = join(names(Base), &quot; &quot;)
+textcurve(&quot;this spiral contains every word in julia names(Base): &quot; * textstring,
+    -π/2,
+    350, 0, 0,
+    spiral_in_out_shift = -8.0,
+    letter_spacing = 0,
+    spiral_ring_step = 0)
+fontsize(35)
+fontface(&quot;Avenir-Black&quot;)
+textcentered(&quot;julia names(Base)&quot;, 0, 0)</code></pre><p><img src="../../assets/figures/text-spiral.png" alt="text on a curve or spiral"/></p><p>For shorter strings, <a href="../../reference/api/#Luxor.textcurvecentered-Tuple{AbstractString, Any, Any, Point}"><code>textcurvecentered</code></a> tries to place the text on a circular arc by its center point.</p><pre><code class="language-julia hljs">fontface(&quot;Arial-Black&quot;)
+fontsize(24) # hide
+sethue(&quot;black&quot;) # hide
+setdash(&quot;dot&quot;) # hide
+setline(0.25) # hide
+circle(O, 100, action = :stroke)
+textcurvecentered(&quot;hello world&quot;, -π/2, 100, O;
+    clockwise = true,
+    letter_spacing = 0,
+    baselineshift = -20
+    )
+textcurvecentered(&quot;hello world&quot;, π/2, 100, O;
+    clockwise = false,
+    letter_spacing = 0,
+    baselineshift = 10
+    )</code></pre><p><img src="../../assets/figures/text-centered.png" alt="text centered on curve"/></p><h2 id="Text-on-a-polygon"><a class="docs-heading-anchor" href="#Text-on-a-polygon">Text on a polygon</a><a id="Text-on-a-polygon-1"></a><a class="docs-heading-anchor-permalink" href="#Text-on-a-polygon" title="Permalink"></a></h2><p>Use <a href="../../reference/api/#Luxor.textonpoly-Tuple{AbstractString, Any}"><code>textonpoly()</code></a> to draw a string <code>str</code> that follows the route of a polygon.</p><pre><code class="language-julia hljs">setmesh(mesh(
+    box(BoundingBox()),
+    [
+        RGB(0.2, 0.2, 0.99),
+        RGB(0.9, 0.2, 0.3),
+        RGB(0.9, 0.9, 0.4),
+        RGB(0.2, 0.8, 0.99),
+    ],
+))
+
+fontsize(15)
+
+for y = -250:20:250
+    points = [
+        Point(
+            65x,
+            y + 30sin(x + rescale(y, -260, 250, 0, 2π)),
+        ) for x = -2π:π/10:2π
+    ]
+    textonpoly(&quot;WAVES &quot; ^ 15, points)
+end</code></pre><img src="8d0bc9d6.png" alt="Example block output"/><h2 id="Text-clipping"><a class="docs-heading-anchor" href="#Text-clipping">Text clipping</a><a id="Text-clipping-1"></a><a class="docs-heading-anchor-permalink" href="#Text-clipping" title="Permalink"></a></h2><p>You can use newly-created text paths as a clipping region - here the text paths are filled with names of randomly chosen Julia functions:</p><p><img src="../../assets/figures/text-path-clipping.png" alt="text clipping"/></p><pre><code class="language-julia hljs">fontsize(600)                             # big fontsize to use for clipping
+fontface(&quot;Agenda-Black&quot;)
+str = &quot;julia&quot;                             # string to be clipped
+w, h = textextents(str)[3:4]              # get width and height
+
+translate(-(currentwidth/2) + 50, -(currentheight/2) + h)
+
+textpath(str)                             # make text into a path
+setline(3)
+setcolor(&quot;black&quot;)
+fillpreserve()                            # fill but keep
+clip()                                    # and use for clipping region
+
+fontface(&quot;Monaco&quot;)
+fontsize(10)
+namelist = map(x-&gt;string(x), names(Base)) # get list of function names in Base.
+
+x = -20
+y = -h
+while y &lt; currentheight
+    sethue(rand(7:10)/10, rand(7:10)/10, rand(7:10)/10)
+    s = namelist[rand(1:end)]
+    text(s, x, y)
+    se = textextents(s)
+    x += se[5]                            # move to the right
+    if x &gt; w
+        x = -20                            # next row
+        y += 10
+    end
+end</code></pre><h2 id="Text-blocks,-boxes,-and-wrapping"><a class="docs-heading-anchor" href="#Text-blocks,-boxes,-and-wrapping">Text blocks, boxes, and wrapping</a><a id="Text-blocks,-boxes,-and-wrapping-1"></a><a class="docs-heading-anchor-permalink" href="#Text-blocks,-boxes,-and-wrapping" title="Permalink"></a></h2><p>Longer lines of text can be made to wrap inside an imaginary rectangle with <a href="../../reference/api/#Luxor.textwrap-Tuple{AbstractString, Real, Point, Function}"><code>textwrap</code></a>. Specify the required width of the rectangle, and the location of the top left corner.</p><pre><code class="language-julia hljs">fontface(&quot;Georgia&quot;)
+fontsize(12) # hide
+sethue(&quot;black&quot;) # hide
+
+loremipsum = &quot;&quot;&quot;Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Nunc placerat lorem ullamcorper,
+sagittis massa et, elementum dui. Sed dictum ipsum vel
+commodo pellentesque. Aliquam erat volutpat. Nam est
+dolor, vulputate a molestie aliquet, rutrum quis lectus.
+Sed lectus mauris, tristique et tempor id, accumsan
+pharetra lacus. Donec quam magna, accumsan a quam
+quis, mattis hendrerit nunc. Nullam vehicula leo ac
+leo tristique, a condimentum tortor faucibus.&quot;&quot;&quot;
+
+setdash(&quot;dot&quot;)
+box(O, 200, 200, action = :stroke)
+textwrap(loremipsum, 200, O - (200/2, 200/2))</code></pre><p><img src="../../assets/figures/text-wrapping.png" alt="text wrapping"/></p><p><a href="../../reference/api/#Luxor.textwrap-Tuple{AbstractString, Real, Point, Function}"><code>textwrap</code></a> accepts a function that allows you to insert code that responds to the next line&#39;s linenumber, contents, position, and height.</p><pre><code class="language-julia hljs">fontface(&quot;Georgia&quot;)
+fontsize(12) # hide
+sethue(&quot;black&quot;) # hide
+
+loremipsum = &quot;&quot;&quot;Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Nunc placerat lorem ullamcorper,
+sagittis massa et, elementum dui. Sed dictum ipsum vel
+commodo pellentesque. Aliquam erat volutpat. Nam est
+dolor, vulputate a molestie aliquet, rutrum quis lectus.
+Sed lectus mauris, tristique et tempor id, accumsan
+pharetra lacus. Donec quam magna, accumsan a quam
+quis, mattis hendrerit nunc. Nullam vehicula leo ac
+leo tristique, a condimentum tortor faucibus.&quot;&quot;&quot;
+
+textwrap(loremipsum, 200, O - (200/2, 200/2),
+    (lnumber, str, pt, l) -&gt; begin
+        sethue(Colors.HSB(rescale(lnumber, 1, 15, 0, 360), 1, 1))
+        text(string(&quot;line &quot;, lnumber), pt - (50, 0))
+    end)</code></pre><p><img src="../../assets/figures/text-wrapping-1.png" alt="text wrapped"/></p><p>The <a href="../../reference/api/#Luxor.textbox"><code>textbox</code></a> function also draws text inside a box, but doesn&#39;t alter the lines, and doesn&#39;t force the text to a specific width. Supply an array of strings and the top left position. The <code>leading</code> argument specifies the distance between the lines, so should be set relative to the current font size (as set with <a href="../../reference/api/#Luxor.fontsize-Tuple{Any}"><code>fontsize</code></a>).</p><p>This example counts the number of characters drawn, using a simple closure. The function returns the position of the start of what would have been the next line.</p><pre><code class="language-julia hljs">fontface(&quot;Georgia&quot;)
+fontsize(30)
+
+loremipsum = &quot;&quot;&quot;Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Nunc placerat lorem ullamcorper,
+sagittis massa et, elementum dui. Sed dictum ipsum vel
+commodo pellentesque. Aliquam erat volutpat. Nam est
+dolor, vulputate a molestie aliquet, rutrum quis lectus.
+Sed lectus mauris, tristique et tempor id, accumsan
+pharetra lacus. Donec quam magna, accumsan a quam
+quis, mattis hendrerit nunc. Nullam vehicula leo ac
+leo tristique, a condimentum tortor faucibus.&quot;&quot;&quot;
+
+_counter() = (a = 0; (n) -&gt; a += n)
+counter = _counter()
+
+translate(boxtopleft(BoundingBox()))
+fontface(&quot;Georgia&quot;)
+fontsize(20)
+
+finishpos = textbox(filter(!isempty, split(loremipsum, &quot;\n&quot;)),
+    O + (5, 0),
+    leading = 28,
+    linefunc = (lnumber, str, pt, h) -&gt; begin
+        text(string(lnumber), pt - (30, 0))
+        counter(length(str))
+    end)
+
+fontsize(10)
+text(string(counter(0), &quot; characters&quot;), finishpos)</code></pre><p><img src="../../assets/figures/textbox.png" alt="textbox"/></p><h2 id="Text-formatting"><a class="docs-heading-anchor" href="#Text-formatting">Text formatting</a><a id="Text-formatting-1"></a><a class="docs-heading-anchor-permalink" href="#Text-formatting" title="Permalink"></a></h2><p>Use <a href="../../reference/api/#Luxor.textformat-Tuple"><code>textformat</code></a> to draw text with inline formatting. You can specify the color and font of strings as they&#39;re displayed in a block.</p><p><code>textformat()</code> accepts any number of arguments, each of which can be either a plain string or a named tuple containing both text and formatting information. The arguments are drawn, separated with spaces.</p><pre><code class="language-julia hljs">using Luxor
+@drawsvg begin
+    background(&quot;black&quot;)
+    sethue(&quot;white&quot;)
+    textformat(&quot;to be,&quot;, &quot;or&quot;, &quot;not&quot;, &quot;to&quot;, &quot;be&quot;, fontsize=30)
+end 800 200</code></pre><img src='data:image/svg+xml;utf-8,<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="200" viewBox="0 0 800 200">
+<defs>
+<g>
+<g id="glyph-807440-0-0">
+<path d="M 8.109375 -0.125 C 7.242188 0.113281 6.359375 0.234375 5.453125 0.234375 C 3.335938 0.234375 2.28125 -0.960938 2.28125 -3.359375 L 2.28125 -13.9375 L 0.453125 -13.9375 L 0.453125 -15.84375 L 2.390625 -15.84375 L 3.171875 -19.390625 L 4.921875 -19.390625 L 4.921875 -15.84375 L 7.859375 -15.84375 L 7.859375 -13.9375 L 4.921875 -13.9375 L 4.921875 -3.921875 C 4.921875 -3.160156 5.046875 -2.625 5.296875 -2.3125 C 5.546875 -2.007812 5.976562 -1.859375 6.59375 -1.859375 C 6.945312 -1.859375 7.453125 -1.925781 8.109375 -2.0625 Z M 8.109375 -0.125 "/>
+</g>
+<g id="glyph-807440-0-1">
+<path d="M 15.421875 -7.9375 C 15.421875 -5.164062 14.8125 -3.097656 13.59375 -1.734375 C 12.375 -0.378906 10.601562 0.296875 8.28125 0.296875 C 5.96875 0.296875 4.21875 -0.40625 3.03125 -1.8125 C 1.851562 -3.226562 1.265625 -5.269531 1.265625 -7.9375 C 1.265625 -13.40625 3.628906 -16.140625 8.359375 -16.140625 C 10.785156 -16.140625 12.566406 -15.472656 13.703125 -14.140625 C 14.847656 -12.804688 15.421875 -10.738281 15.421875 -7.9375 Z M 12.65625 -7.9375 C 12.65625 -10.125 12.328125 -11.710938 11.671875 -12.703125 C 11.023438 -13.691406 9.9375 -14.1875 8.40625 -14.1875 C 6.863281 -14.1875 5.75 -13.679688 5.0625 -12.671875 C 4.375 -11.660156 4.03125 -10.082031 4.03125 -7.9375 C 4.03125 -5.851562 4.367188 -4.285156 5.046875 -3.234375 C 5.722656 -2.179688 6.789062 -1.65625 8.25 -1.65625 C 9.832031 -1.65625 10.960938 -2.160156 11.640625 -3.171875 C 12.316406 -4.191406 12.65625 -5.78125 12.65625 -7.9375 Z M 12.65625 -7.9375 "/>
+</g>
+<g id="glyph-807440-0-2">
+<path d="M 15.421875 -8 C 15.421875 -2.46875 13.476562 0.296875 9.59375 0.296875 C 8.394531 0.296875 7.394531 0.078125 6.59375 -0.359375 C 5.800781 -0.796875 5.15625 -1.5 4.65625 -2.46875 L 4.625 -2.46875 C 4.625 -2.15625 4.601562 -1.6875 4.5625 -1.0625 C 4.53125 -0.445312 4.503906 -0.09375 4.484375 0 L 1.9375 0 C 1.988281 -0.53125 2.015625 -1.617188 2.015625 -3.265625 L 2.015625 -21.734375 L 4.65625 -21.734375 L 4.65625 -15.546875 C 4.65625 -14.910156 4.632812 -14.160156 4.59375 -13.296875 L 4.65625 -13.296875 C 5.144531 -14.316406 5.789062 -15.046875 6.59375 -15.484375 C 7.40625 -15.921875 8.40625 -16.140625 9.59375 -16.140625 C 11.59375 -16.140625 13.0625 -15.460938 14 -14.109375 C 14.945312 -12.765625 15.421875 -10.726562 15.421875 -8 Z M 12.65625 -7.90625 C 12.65625 -10.125 12.363281 -11.710938 11.78125 -12.671875 C 11.195312 -13.628906 10.242188 -14.109375 8.921875 -14.109375 C 7.429688 -14.109375 6.347656 -13.597656 5.671875 -12.578125 C 4.992188 -11.566406 4.65625 -9.957031 4.65625 -7.75 C 4.65625 -5.664062 4.988281 -4.128906 5.65625 -3.140625 C 6.320312 -2.148438 7.398438 -1.65625 8.890625 -1.65625 C 10.222656 -1.65625 11.179688 -2.144531 11.765625 -3.125 C 12.359375 -4.101562 12.65625 -5.695312 12.65625 -7.90625 Z M 12.65625 -7.90625 "/>
+</g>
+<g id="glyph-807440-0-3">
+<path d="M 4.046875 -7.375 C 4.046875 -5.550781 4.421875 -4.144531 5.171875 -3.15625 C 5.921875 -2.175781 7.019531 -1.6875 8.46875 -1.6875 C 9.613281 -1.6875 10.53125 -1.914062 11.21875 -2.375 C 11.90625 -2.832031 12.367188 -3.410156 12.609375 -4.109375 L 14.921875 -3.453125 C 13.972656 -0.953125 11.820312 0.296875 8.46875 0.296875 C 6.125 0.296875 4.335938 -0.398438 3.109375 -1.796875 C 1.890625 -3.191406 1.28125 -5.269531 1.28125 -8.03125 C 1.28125 -10.644531 1.890625 -12.648438 3.109375 -14.046875 C 4.335938 -15.441406 6.085938 -16.140625 8.359375 -16.140625 C 13.023438 -16.140625 15.359375 -13.332031 15.359375 -7.71875 L 15.359375 -7.375 Z M 12.625 -9.390625 C 12.476562 -11.054688 12.050781 -12.269531 11.34375 -13.03125 C 10.644531 -13.800781 9.640625 -14.1875 8.328125 -14.1875 C 7.046875 -14.1875 6.03125 -13.757812 5.28125 -12.90625 C 4.53125 -12.050781 4.128906 -10.878906 4.078125 -9.390625 Z M 12.625 -9.390625 "/>
+</g>
+<g id="glyph-807440-0-4">
+<path d="M 5.640625 -3.203125 L 5.640625 -0.75 C 5.640625 0.289062 5.546875 1.15625 5.359375 1.84375 C 5.171875 2.539062 4.882812 3.207031 4.5 3.84375 L 2.703125 3.84375 C 3.617188 2.507812 4.078125 1.226562 4.078125 0 L 2.78125 0 L 2.78125 -3.203125 Z M 5.640625 -3.203125 "/>
+</g>
+<g id="glyph-807440-0-5">
+<path d="M 2.078125 0 L 2.078125 -12.15625 C 2.078125 -13.269531 2.050781 -14.5 2 -15.84375 L 4.484375 -15.84375 C 4.554688 -14.050781 4.59375 -12.972656 4.59375 -12.609375 L 4.65625 -12.609375 C 5.070312 -13.972656 5.550781 -14.898438 6.09375 -15.390625 C 6.644531 -15.890625 7.421875 -16.140625 8.421875 -16.140625 C 8.773438 -16.140625 9.132812 -16.09375 9.5 -16 L 9.5 -13.578125 C 9.144531 -13.671875 8.675781 -13.71875 8.09375 -13.71875 C 7 -13.71875 6.160156 -13.25 5.578125 -12.3125 C 5.003906 -11.375 4.71875 -10.023438 4.71875 -8.265625 L 4.71875 0 Z M 2.078125 0 "/>
+</g>
+<g id="glyph-807440-0-6">
+<path d="M 12.078125 0 L 12.078125 -10.046875 C 12.078125 -11.085938 11.972656 -11.894531 11.765625 -12.46875 C 11.566406 -13.050781 11.242188 -13.46875 10.796875 -13.71875 C 10.347656 -13.976562 9.6875 -14.109375 8.8125 -14.109375 C 7.550781 -14.109375 6.550781 -13.671875 5.8125 -12.796875 C 5.082031 -11.929688 4.71875 -10.726562 4.71875 -9.1875 L 4.71875 0 L 2.078125 0 L 2.078125 -12.46875 C 2.078125 -14.3125 2.050781 -15.4375 2 -15.84375 L 4.484375 -15.84375 C 4.492188 -15.800781 4.503906 -15.671875 4.515625 -15.453125 C 4.523438 -15.234375 4.535156 -14.984375 4.546875 -14.703125 C 4.566406 -14.429688 4.582031 -13.910156 4.59375 -13.140625 L 4.640625 -13.140625 C 5.242188 -14.234375 5.941406 -15.003906 6.734375 -15.453125 C 7.535156 -15.910156 8.53125 -16.140625 9.71875 -16.140625 C 11.445312 -16.140625 12.710938 -15.707031 13.515625 -14.84375 C 14.328125 -13.976562 14.734375 -12.550781 14.734375 -10.5625 L 14.734375 0 Z M 12.078125 0 "/>
+</g>
+</g>
+</defs>
+<rect x="-80" y="-20" width="960" height="240" fill="rgb(0%25, 0%25, 0%25)" fill-opacity="1"/>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-0" x="400" y="100"/>
+<use xlink:href="%23glyph-807440-0-1" x="408.334961" y="100"/>
+</g>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-2" x="433.354492" y="100"/>
+<use xlink:href="%23glyph-807440-0-3" x="450.039062" y="100"/>
+<use xlink:href="%23glyph-807440-0-4" x="466.723633" y="100"/>
+</g>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-1" x="483.393555" y="100"/>
+<use xlink:href="%23glyph-807440-0-5" x="500.078125" y="100"/>
+</g>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-6" x="518.40332" y="100"/>
+<use xlink:href="%23glyph-807440-0-1" x="535.087891" y="100"/>
+<use xlink:href="%23glyph-807440-0-0" x="551.772461" y="100"/>
+</g>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-0" x="568.442383" y="100"/>
+<use xlink:href="%23glyph-807440-0-1" x="576.777344" y="100"/>
+</g>
+<g fill="rgb(100%25, 100%25, 100%25)" fill-opacity="1">
+<use xlink:href="%23glyph-807440-0-2" x="601.796875" y="100"/>
+<use xlink:href="%23glyph-807440-0-3" x="618.481445" y="100"/>
+</g>
+</svg>
+'/><p>Mix strings and tuples as required:</p><pre><code class="language-julia hljs">using Luxor
+@drawsvg begin
+    background(&quot;black&quot;)
+    sethue(&quot;white&quot;)
+    fontsize(30)
+    textformat(
+        (text=&quot;that&quot;, fontsize=60),
+        &quot;is the&quot;,
+        (text=&quot;question&quot;, color=&quot;magenta&quot;))
+end 800 200</code></pre><img src="e998efb1.svg" alt="Example block output"/><p>The <code>advance</code> and <code>baseline</code> keywords can determine the position of the text  horizontally and vertically.</p><pre><code class="language-julia hljs">using Luxor
+@drawsvg begin
+    background(&quot;grey10&quot;)
+    setopacity(0.5)
+    textformat(
+        (text=&quot;R&quot;,
+            color=&quot;red&quot;,
+            advance=-80,
+            ),
+        (text=&quot;G&quot;,
+            color=&quot;green&quot;,
+            advance=-80,
+            baseline =  50,
+            ),
+            (text=&quot;B&quot;,
+            color=&quot;blue&quot;,
+            advance=-80,
+            baseline =  -50,
+            ),
+    fontsize=200,
+    position=midpoint(boxmiddleleft(), boxbottomcenter())
+    )
+end 800 300</code></pre><img src='data:image/svg+xml;utf-8,<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="300" viewBox="0 0 800 300">
+<defs>
+<g>
+<g id="glyph-872960-0-0">
+<path d="M 113.671875 0 L 77.9375 -57.125 L 35.0625 -57.125 L 35.0625 0 L 16.40625 0 L 16.40625 -137.59375 L 81.15625 -137.59375 C 96.644531 -137.59375 108.601562 -134.125 117.03125 -127.1875 C 125.46875 -120.257812 129.6875 -110.613281 129.6875 -98.25 C 129.6875 -88.019531 126.707031 -79.421875 120.75 -72.453125 C 114.789062 -65.492188 106.570312 -61.101562 96.09375 -59.28125 L 135.15625 0 Z M 110.9375 -98.046875 C 110.9375 -106.054688 108.21875 -112.160156 102.78125 -116.359375 C 97.34375 -120.554688 89.515625 -122.65625 79.296875 -122.65625 L 35.0625 -122.65625 L 35.0625 -71.875 L 80.078125 -71.875 C 89.910156 -71.875 97.507812 -74.164062 102.875 -78.75 C 108.25 -83.34375 110.9375 -89.773438 110.9375 -98.046875 Z M 110.9375 -98.046875 "/>
+</g>
+<g id="glyph-872960-0-1">
+<path d="M 10.0625 -69.4375 C 10.0625 -91.769531 16.050781 -109.054688 28.03125 -121.296875 C 40.007812 -133.535156 56.835938 -139.65625 78.515625 -139.65625 C 93.753906 -139.65625 106.125 -137.082031 115.625 -131.9375 C 125.132812 -126.789062 132.457031 -118.554688 137.59375 -107.234375 L 119.828125 -101.953125 C 115.921875 -109.765625 110.53125 -115.460938 103.65625 -119.046875 C 96.789062 -122.628906 88.25 -124.421875 78.03125 -124.421875 C 62.144531 -124.421875 50 -119.617188 41.59375 -110.015625 C 33.195312 -100.410156 29 -86.882812 29 -69.4375 C 29 -52.050781 33.457031 -38.328125 42.375 -28.265625 C 51.300781 -18.210938 63.640625 -13.1875 79.390625 -13.1875 C 88.378906 -13.1875 96.765625 -14.550781 104.546875 -17.28125 C 112.328125 -20.019531 118.625 -23.734375 123.4375 -28.421875 L 123.4375 -53.21875 L 82.328125 -53.21875 L 82.328125 -68.84375 L 140.625 -68.84375 L 140.625 -21.390625 C 133.332031 -13.960938 124.394531 -8.210938 113.8125 -4.140625 C 103.238281 -0.078125 91.765625 1.953125 79.390625 1.953125 C 65.003906 1.953125 52.601562 -0.910156 42.1875 -6.640625 C 31.769531 -12.367188 23.8125 -20.617188 18.3125 -31.390625 C 12.8125 -42.171875 10.0625 -54.851562 10.0625 -69.4375 Z M 10.0625 -69.4375 "/>
+</g>
+<g id="glyph-872960-0-2">
+<path d="M 122.859375 -38.765625 C 122.859375 -26.523438 118.394531 -17.003906 109.46875 -10.203125 C 100.550781 -3.398438 88.148438 0 72.265625 0 L 16.40625 0 L 16.40625 -137.59375 L 66.40625 -137.59375 C 98.695312 -137.59375 114.84375 -126.460938 114.84375 -104.203125 C 114.84375 -96.066406 112.5625 -89.226562 108 -83.6875 C 103.445312 -78.15625 97.003906 -74.445312 88.671875 -72.5625 C 99.609375 -71.257812 108.039062 -67.597656 113.96875 -61.578125 C 119.894531 -55.554688 122.859375 -47.953125 122.859375 -38.765625 Z M 96.09375 -101.953125 C 96.09375 -109.378906 93.550781 -114.6875 88.46875 -117.875 C 83.394531 -121.0625 76.039062 -122.65625 66.40625 -122.65625 L 35.0625 -122.65625 L 35.0625 -79.109375 L 66.40625 -79.109375 C 76.363281 -79.109375 83.800781 -80.976562 88.71875 -84.71875 C 93.632812 -88.457031 96.09375 -94.203125 96.09375 -101.953125 Z M 104 -40.234375 C 104 -56.441406 92.609375 -64.546875 69.828125 -64.546875 L 35.0625 -64.546875 L 35.0625 -14.9375 L 71.296875 -14.9375 C 82.679688 -14.9375 90.976562 -17.050781 96.1875 -21.28125 C 101.394531 -25.519531 104 -31.835938 104 -40.234375 Z M 104 -40.234375 "/>
+</g>
+</g>
+</defs>
+<rect x="-80" y="-30" width="960" height="360" fill="rgb(10.196078%25, 10.196078%25, 10.196078%25)" fill-opacity="1"/>
+<g fill="rgb(100%25, 0%25, 0%25)" fill-opacity="0.5">
+<use xlink:href="%23glyph-872960-0-0" x="200" y="225"/>
+</g>
+<g fill="rgb(0%25, 50.196078%25, 0%25)" fill-opacity="0.5">
+<use xlink:href="%23glyph-872960-0-1" x="264.433594" y="175"/>
+</g>
+<g fill="rgb(0%25, 0%25, 100%25)" fill-opacity="0.5">
+<use xlink:href="%23glyph-872960-0-2" x="340" y="275"/>
+</g>
+</svg>
+'/><p>With named tuples, remember to insert the trailing <code>,</code> where necessary:</p><pre><code class="language-julia hljs">textformat((text=&quot;oops&quot;))
+
+textformat((text=&quot;yes&quot;,))</code></pre><p>A <code>prolog</code> keyword lets you specify a function <code>(pos, str)</code> that will be called before the text is drawn. You can use this, for example, to draw colored boxes and other graphics relative to the text.</p><pre><code class="language-julia hljs">function bullet(pos, str::String)
+    @layer begin
+        translate(pos + (-80, -15))
+        juliacircles(15)
+    end
+    @layer begin
+        tx = textextents(str)
+        bxwidth = tx[5] + 5
+        bxheight = tx[4] - tx[2]
+        hpos = pos.x + tx[5] / 2
+        vpos = pos.y - tx[6] / 2 + tx[2] / 2
+        bxcenter = Point(hpos, vpos)
+        sethue(&quot;blue&quot;)
+        box(bxcenter, bxwidth, bxheight, :stroke)
+    end
+end
+
+@drawsvg begin
+    background(&quot;black&quot;)
+    sethue(&quot;white&quot;)
+    fontsize(50)
+    textformat(
+        (text=&quot;programming&quot;, prolog=bullet),
+        (text=&quot;in Julia&quot;, prolog=bullet),
+        (text=&quot;is fun&quot;, prolog=bullet),
+        (text=&quot;for all&quot;, prolog=bullet),
+        width=150,
+        leading=150,
+        position=Point(-100, -100))
+end 800 400</code></pre><img src="4e6b24a7.svg" alt="Example block output"/><h2 id="Text-tracking"><a class="docs-heading-anchor" href="#Text-tracking">Text tracking</a><a id="Text-tracking-1"></a><a class="docs-heading-anchor-permalink" href="#Text-tracking" title="Permalink"></a></h2><p>Use <a href="../../reference/api/#Luxor.texttrack-Tuple{AbstractString, Any, Any, Any}"><code>texttrack</code></a> to track or letter-space text, i.e. vary the spacing between every letter. (&quot;Kerning&quot; is when you do this for just a pair of letters.)</p><p>The tracking units depend on the current font size. In a 12‑point font, 1 em equals 12 points. A point is about 0.35mm, so a 1000 units of tracking for 12 point text produces about 4.2mm of space between each character.</p><pre><code class="language-julia hljs">function text_tracking_example()
+    fonts = [
+        &quot;Verdana&quot;,
+        &quot;TrebuchetMS&quot;,
+        &quot;Times-Roman&quot;,
+        &quot;Georgia&quot;,
+        &quot;Monaco&quot;]
+    fsize = 16
+    grid = GridRect(boxtopleft(BoundingBox() * 0.9), 0, 20)
+    tracking = 50
+    for f in fonts
+        fontsize(fsize)
+        fontface(f)
+        texttrack(&quot;This is some text in $(f): it’s been tracked by +$(tracking)&quot;,
+            nextgridpoint(grid), tracking, fsize)
+        text(&quot;This is some text in $(f): it’s not been tracked&quot;,
+            nextgridpoint(grid))
+        texttrack(&quot;This is some text in $(f): it’s been tracked by -$(tracking)&quot;,
+            nextgridpoint(grid), -tracking, fsize)
+    end
+    finish()
+end
+
+text_tracking_example()</code></pre><p><img src="../../assets/figures/texttrack.svg" alt="textbox"/></p><h2 id="Text-fitting"><a class="docs-heading-anchor" href="#Text-fitting">Text fitting</a><a id="Text-fitting-1"></a><a class="docs-heading-anchor-permalink" href="#Text-fitting" title="Permalink"></a></h2><p>Sometimes you want to fit some text into a specific area, rather than use a specific font size.</p><p>To do this, use <a href="../../reference/api/#Luxor.textfit"><code>textfit</code></a>, and supply the text and a bounding box.</p><pre><code class="language-julia hljs">rh = 700 .* [4//11, 2//11, 4//11, 1//11]
+cw = 700 .* [6//11, 2//11, 3//11, 1//11]
+cells = Table(rh, cw)
+for (pos, n) in cells
+    setgrey(rand()/2)
+    box(cells, n, :fill)
+    setgrey(1)
+    textfit(&quot;The sound of one hand clapping&quot;, BoundingBox(box(cells, n)), horizontalmargin=10)
+end</code></pre><img src="9bd8652c.svg" alt="Example block output"/><p>You can supply a value for <code>maximumfontsize</code> as an optional argument, such that the text never exceeds that size (although it will probably be smaller).</p><div class="admonition is-info" id="Note-f0598da46d70b82b"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-f0598da46d70b82b" title="Permalink"></a></header><div class="admonition-body"><p>The algorithm used by this function doesn&#39;t always produce ideal results. Suggestions for improvements welcome!</p></div></div><h2 id="Animating-text"><a class="docs-heading-anchor" href="#Animating-text">Animating text</a><a id="Animating-text-1"></a><a class="docs-heading-anchor-permalink" href="#Animating-text" title="Permalink"></a></h2><p>To animate the drawing of text, you can obtain and store the paths, and then build an animation using <code>drawpath()</code>.</p><p><img src="../../assets/figures/textanimation.gif" alt="text animation"/></p><pre><code class="language-julia hljs">function frame(scene, framenumber)
+    background(&quot;black&quot;)
+    sethue(&quot;gold&quot;)
+    fontface(&quot;BigMummy&quot;)
+    fontsize(40)
+    textpath(&quot;Thank you for using&quot;, boxtopcenter() + (0, 80) , halign=:center)
+    tp1 = storepath()
+    fontsize(130)
+    textpath(&quot;Luxor&quot;, O + (0, 80), halign=:center)
+    tp2 = storepath()
+
+    eased_n = scene.easingfunction(framenumber - scene.framerange.start,
+        0, 1, scene.framerange.stop - scene.framerange.start)
+
+    for tp in (tp1, tp2)
+        drawpath(tp, eased_n, action = :stroke)
+    end
+end
+
+amovie = Movie(600, 250, &quot;a movie&quot;)
+animate(amovie, Scene(amovie, frame, 1:150), creategif=true, pathname=&quot;/tmp/textanimation.gif&quot;)</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../polygons/">« Work with polygons</a><a class="docs-footer-nextpage" href="../clipping/">Clip graphics »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Thursday 9 April 2026 19:29">Thursday 9 April 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
